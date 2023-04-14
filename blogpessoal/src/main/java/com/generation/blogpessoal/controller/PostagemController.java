@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.repository.PostagemRepository;
 
+// RestController - tornar essa classe uma controlodaroa de rotas
+// RequestMapping - Falar qual a rota para essas contultas 
+
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin(origins = "", allowedHeaders = "")
@@ -20,7 +23,7 @@ import com.generation.blogpessoal.repository.PostagemRepository;
 public class PostagemController {
 
     @Autowired
-    private PostagemRepository postagemRepository;
+    private PostagemRepository postagemRepository; // Injeção de dependencia 
 
     @GetMapping
     public ResponseEntity<List<Postagem>> getAll(){
