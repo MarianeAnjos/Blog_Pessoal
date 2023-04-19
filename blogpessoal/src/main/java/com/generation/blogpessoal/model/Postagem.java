@@ -11,8 +11,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
+//indica ao spring que o objeto virá uma tabela 
 @Entity
+
+// define um nome para a tabela a ser criada
 @Table(name="tb_postagens")
 public class Postagem {
 
