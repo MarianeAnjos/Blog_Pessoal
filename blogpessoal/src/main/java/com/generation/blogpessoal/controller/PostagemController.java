@@ -28,19 +28,23 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class PostagemController {
 	
+	// Injeta dependencia (tipo do contrato) para o tipo de contrato da interface repositorio
 	@Autowired
 	private PostagemRepository postagemRepository;
 	
+	
 	@Autowired 
 	private TemaRepository temaRepository;
+	
+	// puxa, mapeia e retorna todas as respostas 
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll(){
 		return ResponseEntity.ok(postagemRepository.findAll());
 	}
 	
+	// endpoint de busca por id
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> getById(@PathVariable Long id){
 		return postagemRepository.findById(id)
@@ -48,11 +52,13 @@ public class PostagemController {
 					.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	} 
 	
+	// busca por titulo
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
+	// Cria as postagens
 	@PostMapping
 	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem){
 		if (temaRepository.existsById(postagem.getTema().getId()))
@@ -62,6 +68,7 @@ public class PostagemController {
 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema não existe!", null);
 	}
 	 
+	// Alterar informações ja existentes
 	@PutMapping
 	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
 		if (postagemRepository.existsById(postagem.getId())) {
