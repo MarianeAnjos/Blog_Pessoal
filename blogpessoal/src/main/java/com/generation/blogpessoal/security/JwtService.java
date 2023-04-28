@@ -15,6 +15,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
+
+// além de buscar os dados no db cria as regras de negócio do token
 @Component
 public class JwtService {
 
@@ -53,6 +55,7 @@ public class JwtService {
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	}
 
+	//
 	private String createToken(Map<String, Object> claims, String userName) {
 		return Jwts.builder()
 					.setClaims(claims)

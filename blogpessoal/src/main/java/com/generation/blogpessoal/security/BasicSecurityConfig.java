@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+//métodos de autentificação que a plataforma irá validar
 @Configuration
 @EnableWebSecurity
 public class BasicSecurityConfig {
@@ -24,7 +26,7 @@ public class BasicSecurityConfig {
     @Autowired
     private JwtAuthFilter authFilter;
 
-    @Bean
+    @Bean //funciona como o autowired e ingere dependências globais
     UserDetailsService userDetailsService() {
 
         return new UserDetailsServiceImpl();
@@ -60,7 +62,7 @@ public class BasicSecurityConfig {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/usuarios/logar").permitAll()
+                        .requestMatchers("/usuarios/logar").permitAll() //pra liberar o cadastro e login antes da autenticação
                         .requestMatchers("/usuarios/cadastrar").permitAll()
                         .requestMatchers("/error/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
@@ -68,7 +70,7 @@ public class BasicSecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic();
-
+        
         return http.build();
 
     }

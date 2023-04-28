@@ -41,18 +41,10 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem") //para desativar a recursividade, trazendo as infos apenas 1 vez
 	private Tema tema;
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -91,6 +83,14 @@ public class Postagem {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
