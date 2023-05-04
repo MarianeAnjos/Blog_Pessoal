@@ -16,8 +16,6 @@ import com.generation.blogpessoal.model.Usuario;
 import com.generation.blogpessoal.repository.UsuarioRepository;
 import com.generation.blogpessoal.security.JwtService;
 
-
-//camada intermediaria, que contém um nivel a mais de processamento antes de mandar para o banco 
 @Service
 public class UsuarioService {
 
@@ -62,7 +60,7 @@ public class UsuarioService {
 
 	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
         
-        // Gera o Objeto de autenticação. gera o payload para o token
+        // Gera o Objeto de autenticação
 		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha());
 		
         // Autentica o Usuario
