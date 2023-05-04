@@ -21,19 +21,19 @@ public class SwaggerConfig {
     OpenAPI springBlogPessoalOpenAPI() {
         return new OpenAPI()
             .info(new Info()//informações da documentação 
-                .title("Projeto Clube do Livro")
-                .description("Projeto Clube do Livro - Juliana Lopes")
+                .title("Projeto Conte-me um Itan")
+                .description("Projeto Conte-me um Itan - Mariane Anjos")
                 .version("v0.0.1")
                 .license(new License()
                     .name("Generation Brasil")
                     .url("https://brazil.generation.org/"))
                 .contact(new Contact()
-                    .name("Juliana Lopes")
-                    .url("https://github.com/julianalopesco/")
-                    .email("julianalopesmf@gmail.com")))
+                    .name("Mariane Anjos")
+                    .url("https://github.com/MarianeAnjos?tab=repositories")
+                    .email("mariane.ferreiraanjos@outlook.com")))
             .externalDocs(new ExternalDocumentation()
                 .description("Github")
-                .url("https://github.com/julianalopesco/blogpessoal"));
+                .url("https://github.com/MarianeAnjos/Blog_Pessoal"));
     }
 
 	//métodos para personalizar as respostas de requisições 
